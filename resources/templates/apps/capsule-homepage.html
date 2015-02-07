@@ -1,0 +1,275 @@
+<!-- 'Application Content' of the Capsule -->
+{% extends "capsule-base.html" %}
+{% block title %}Capsule - Your Companion{% endblock %}
+{% block margins %}{{block.super}}
+<style>
+body{
+	background-color: #F0F0F0;
+}
+</style>
+
+<!-- Defining Nav Bar -->
+<div class="navbar navbar-fixed-top" data-toggle="collapse" data-target=".nav-collapse">
+	<div class="navbar-inner">
+		<!-- <a class="brand" href="#">capsule</a> -->
+		<img src="{{STATIC_URL}}img/capsule/capsul.png" alt="" style="height:2.7em; width:auto" class="span12"/>     
+		<ul class="nav">
+			<li class=""><a href="#" id="home">Home</a></li>
+			<li><a href="#about" id="aboutUs">About us</a></li>
+			<li><a href="#faqs" id="faqs-link">FAQs</a></li>
+			<li><a href="#contactus" id="contactUs">Contact us</a></li>
+		</ul>
+		<!-- Improvement-
+		- Add a logged in as user.
+		 -->
+		 <a class="btn btn-primary" href="{{STATIC_URL}}capsule-extension (92.80).crx">Chrome Extension</a>
+		 {% if user.username %}
+			<div class="btn-group pull-right" style="margin-right:20px">
+			    <a class="btn" href="/api/user/logout/">Logout</a>
+			    <a class="btn btn-primary" href="/dashboard/">My Capsule</a>
+			</div>
+		{% else %}
+			<a id="reset" class="btn" data-toggle="modal" href="#reset-form-box" style="display:none;">Forgot password.</a>
+			<div class="btn-group pull-right" style="margin-right:20px">
+				<a id="signup" class="btn" data-toggle="modal" href="#signup-form-box">Sign Up</a>
+				<a id="login" class="btn btn-primary" data-toggle="modal" href="#login-form-box">Login</a>
+			</div>    
+		{% endif %}
+	</div>
+</div>
+
+<!-- Main Workspace -->
+<div id="workSpace" style="margin-top:40px;">
+	<div id="frontPageContent">  
+		<!-- Carousel defined -->    
+		<div class="row-fluid">
+			<div class="span12" style="height:450px; background-color:#F0F0F0">
+				<div id="imagewalaarea">   
+					<div id="welcome-carousel" class="carousel slide span10 offset1"><!-- class of slide for animation -->
+						<div class="carousel-inner">
+							<div class="item active"><!-- class of active since it's the first item -->
+								<img src="{{STATIC_URL}}img/capsule/image1.jpg" alt="" style="height:450px" class="span12"/>
+								<!-- <div class="carousel-caption">
+									<p>Colloseum</p>
+								</div> -->
+							</div>
+							<div class="item">
+								<img src="{{STATIC_URL}}img/capsule/image2.jpg" alt="" style="height:450px" class="span12"/>
+								<!-- <div class="carousel-caption">
+									<p>Colloseum</p>
+								</div>
+							-->							</div>
+							<div class="item">
+								<img src="{{STATIC_URL}}img/capsule/image3.jpg" alt="" style="height:450px" class="span12"/>
+								<!-- <div class="carousel-caption">
+									<p><span style="color:white">Colloseum</span></p>
+								</div> -->
+							</div>
+						</div>
+						<a class="carousel-control left" href="#welcome-carousel" data-slide="prev">&lsaquo;</a>
+						<a class="carousel-control right" href="#welcome-carousel" data-slide="next">&rsaquo;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<!-- Three Images defined -->   
+
+	<div class="container-fluid">
+		<div class="row-fluid" style="visibility:hidden">----HIDDEN----</div>
+		<div class="row-fluid">
+			<div class="span10 offset1">
+				<div class="span4" id="lefthead">
+					<center>
+						<h2>Stack Up!</h2>
+						<img src="{{STATIC_URL}}img/capsule/image11.jpg" alt="" style="height:150px; width:200px;"><br><br>
+						<p>Conveniently bookmark the sites of your choices, so you no longer have to worry about forgetting them</p>
+					</center>
+				</div>
+				<div class="span4" id="middlehead">
+					<center>
+						<h2 align="center">Highlight</h2>
+						<img src="{{STATIC_URL}}img/capsule/image12.jpg" alt="" style="height:150px; width:200px;">
+						<br><br>
+						<p>Highlight the 'words of wisdom' and access them later-All at the click of a button. Don't bother with cumbersome folders anymore, just tag things according to your categories and access with a single click</p>
+					</center>
+				</div>
+				<div class="span4" id="righthead">
+					<center>
+						<h2>Images</h2>
+						<img src="{{STATIC_URL}}img/capsule/image14.jpg" alt="" style="height:150px; width:200px;">
+						<br><br>
+						<p>Save those beautiful pictures you stumbled across and savour them at your will</p>
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span10 offset1">
+				<!-- AboutUS -->
+				<div id="about" style="padding-top:40px;">
+					<h2 style="font-family: Arial, Helvetica, sans-serif;">About Capsule</h2>
+					<div id="about-text">
+						<p>If you browse or read a lot on the web, we believe you will find Capsule indispensable. Capsule is two services in one - it is a research and collaborative research tool on the one hand, and a knowledge-sharing community and social content site on the other.</p> 
+
+						<p>A personal research tool
+							Capsule provides a browser add-on that can really improve your research productivity. As you read on the web, instead of just bookmarking, you can highlight portions of web pages that are of particular interest to you.Unlike most other web "highlighters" that merely clip, Capsule highlights are persistent in the sense that whenever you return to the original web page, you will see your highlights  superimposed on the original page, just what you would expect if you highlighted or wrote on a book!
+						</p>
+
+						<p>
+							Moreover, all the information -- highlighted paragraphs and the original url -- are saved on Capsule servers, creating your personal digest of the web, your own collection of highlights from the web - ones that are meaningful to you! You can easily search, access, sort and share this collection from any PC .
+						</p>
+
+						<h2>About Team</h2>
+
+						<p>Capsule was created by a group of 9 students from DA-IICT during their Software Engineering Project under guidance of Prof.Asim Banerjee to help people who discover an interesting article, video or web page, but don’t have time to view it. Once saved to Caosule, the list of content is visible on computer. It can be viewed while waiting in line, on the couch or during commutes or travel.
+						Capsule is in its initial phase and is available on Google Chrome platform.
+						</p>
+					</div>
+				</div>
+				<div id="faqs" style="padding-top:40px;">
+					<h2 style="font-family: Arial, Helvetica, sans-serif;">FAQs</h2>
+					<div id="faq-text">
+						<ol type="A">
+							<li><b>How can I Edit and Delete Tags in Capsule?</b></li>
+							<br>
+							<p>Follow these Steps-</p>
+							<ol type="1">
+								<li style="list-style-type: decimal;">Login to your activity page</li>
+								<li>Take your mouse pointer on the highlight/stackup/image which you want to edit</li>
+								<li>In the rightmost side you will see three icon, first one is to go to the url from which this highlight/stackup/image was taken, second is to edit this higlight/stackup/image, and the third is to delete</li>
+								<li>Select second icon, i.e. edit</li>
+								<li>A Modal will be shown showing all the editable fields</li>
+								<li>You can add/remove tags from there.</li>
+							</ol>
+							<br>
+							<li><b>How do I highlight text on a website?</b></li>
+							<br>
+
+							<p>Follow these steps:</p>
+							<ol type="1">
+								<li>Select text you want to highlight.</li>
+								<li>Click on the capsule icon next to the search bar.</li>
+								<li>Choose color and click on highlight.</li>
+								<li>Add description and tags and save it.</li>
+								<li>When you save items to Capsule, you can view them from virtually anywhere by logging into the website.</li>
+							</ol>
+							<br>
+
+							<li><b>Where can I find my saved items?</b></li>
+							<br>
+							<p>All of your saved data will be stored in your account, which can be accessed using webapp.</p>
+							<br>
+
+							<li><b>How do I add StackUp(Bookmark)?</b></li>
+							<br>
+							<p>Follow these Steps-</p>
+							<ol type="1">
+								<li>Click on the capsule icon next to the search bar</li>
+								<li>Add description and tag and save it</li>
+							</ol>
+							<br>
+
+							<li><b>How do I save image?</b></li>
+							<br>
+							<p>Right click on image and click on save image to capsule.</p>
+							<br>
+
+							<li><b>How do I view all my tags?</b></li>
+							<br>
+							<p>Click on the Tag cloud on your dashboard.</p>
+						</ol>
+					</div>
+				</div>
+				<div id="contactus" style="padding-top:40px;">
+					<h2 style="font-family: Arial, Helvetica, sans-serif;">Contact Us</h2>
+					<div id="contact-text">
+						<p>Have question? Please drop us a mail at <i>info.capsulesen@gmail.com</i>, and we'll get back to you as soon as possible.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<footer>
+			<div class="container" id="foot">
+				<hr>
+				<center><p>&copy; Capsule - The Web Highlighter (2013)</p></center>
+			</div>
+		</footer>
+
+		{% if not user.username %}
+		<!-- Modals -->
+		<!-- Modals : Login -->    
+		<div id="login-form-box" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Log in here</h3>
+			</div>
+			<div id="login-form-status" class="error_msg alert alert-error" style="display:none">Status</div>
+			<div class="modal-body">
+				<form id="login-form">
+					<input type="text" class="span4" placeholder="Username" name="username" required>
+					<input type="password" class="span4" placeholder="Password" name="password" required>
+					<br/>
+				</form>
+				<a id="reset-modal" style="cursor:pointer;">Forgot password. Request for reset.</a>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" arai-hidden="true" id="close-signin">Close</button>
+				<button class="btn pull-left" id="signup-btn-redirect">Signup</button>
+				<button class="btn btn-primary pull-right" type="submit" id="login-btn">Log in</button>
+			</div>
+		</div>
+
+		<!-- Modals : Reset Password -->    
+		<div id="reset-form-box" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Reset Password</h3>
+			</div>
+			<div id="reset-form-status" class="error_msg alert alert-error" style="display:none">Status</div>
+			<div class="modal-body">
+				<form id="reset-form">
+					<input type="text" class="span4" placeholder="Username" name="username" required>
+					<input  id="email" type="email" class="span4" placeholder="Email" name="email" required><br />
+					<a href="#" id="reset-progress-nav" style="display:none;"><img width="16" height="16" src="{{STATIC_URL}}img/spinner.gif"></img></a>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" arai-hidden="true" id="close-reset">Close</button>
+				<button class="btn btn-primary pull-right" type="submit" id="reset-btn">Reset Password</button>
+			</div>
+		</div>
+
+		<!-- Modals : Signup -->      
+		<div id="signup-form-box" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Let's get you started</h3>
+			</div>
+			<div id="signup-form-status" class="error_msg alert alert-error" style="display:none">Status</div>
+			<div class="modal-body span8">
+				<form id="signup-form">
+					<input  id="username" type="text" class="span4" placeholder="Username (at least 4 characters)" name="username" required><br/>
+					<input id="password" type="password" class="span4" placeholder="Password (at least 6 characters)" name="password" required><br/>
+					<input id="confirm-password" type="password" class="span4" placeholder="Confirm Password" required name="confirm-password"><br/>
+					<input  id="email" type="email" class="span4" placeholder="Email (for password recovery)" name="email" required><br/>
+					<input  id="firstname" type="text" class="span4" placeholder="First Name (Optional)" name="firstname" required><br/>
+					<input id="lastname" type="text" class="span4" placeholder="Last Name (Optional)" name="lastname" required><br/>
+				</form>
+			</div>
+
+
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" arai-hidden="true" id="close-signup">Close</button>
+				<!-- <button class="btn pull-left" id="login-btn-redirect">Login</button> -->
+				<button class="btn btn-primary pull-right" id="signup-btn">SignUp</button>
+			</div>
+		</div> 
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

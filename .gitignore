@@ -1,0 +1,12 @@
+# Ignore .pyc files
+*.pyc
+
+# Ignore log files
+*.log
+
+# Ignore temperory files
+*~
+*.bak
+._*
+.DS_Store
+

@@ -1,0 +1,22 @@
+Important
+---------
+
+Frontend
+--------
+Handle errors like -
+	alert("Deletion failed due to unknown reasons.")
+Improve delete so that it does not miss any subsequent queries.
+Handle empty value of rolls (JavaScript)
+Properly handle change password - 'Nothing was changed.' comes instead of 'Please check your credentials.'
+Handle passwords do not match (for new password and the signup form).
+See that only alphanumeric chracters are allowed in Username.
+- Capture 'enter' and properly do the required based on the state of the page.
+- Properly clean tags
+- Correct link of extension on homepage
+- Add a favicon
+
+Extension
+---------
+- Change icon of 'Link to Capsule'.
+- Handle input errors such as invalid tag length for addition forms.
+- Handle form validation of Datasheet edit form.

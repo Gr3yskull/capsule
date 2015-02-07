@@ -1,0 +1,12 @@
+{% extends "raw.html" %}
+
+<!-- Body Content -->
+{% block margins %}
+	<div class="container-fluid">
+		<div class="row"><div class="span1"></div>
+			<div class="span10">
+				{% block content %}{% endblock %}
+			</div>
+		<div class="row"><div class="span1"></div>
+	</div>
+{% endblock %}

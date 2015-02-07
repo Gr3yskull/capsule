@@ -1,0 +1,98 @@
+# -*- coding: utf-8 -*-
+"""
+Started on 29-Mar-2013; 5:00 PM, by mitthu
+The -( capsule )- project.
+
+These tests will pass when you run "manage.py test".
+"""
+
+from django.test import TestCase
+from django.contrib.auth.models import User
+
+from authentication.tests import create_user
+from models import *
+
+def populate_dbms():
+	(user1, pass1) = ('test', 'tester')
+	create_user(user1, pass1)
+
+	from capsule.models import *
+	from capsule.control import *
+	from capsule.query import *
+	from datetime import datetime, timedelta
+	now = datetime.now()
+	one_day = timedelta(days=1)
+
+	# -------------------
+	#  Flushing Database
+	# -------------------
+	for d in Datasheet.objects.all():
+		d.delete()
+
+	for t in Tag.objects.all():
+		t.delete()
+
+	# ----------------
+	#  Inserting data
+	# ----------------
+	# Getting the user: 'test'
+	user = User.objects.get(username='test')
+
+	DatasheetControl.add(user=user, url="http://www.w3schools.com/tags/ref_colorpicker.asp", kind='S', title="Colour Picker", colour='Red', tags=['scraps', 'web'])
+	DatasheetControl.add(user=user, url="https://docs.djangoproject.com/en/1.3/topics/db/models/", kind='H', title="Day", content="Day and night we were out for jobs.", tags=['scraps', 'blogs'])
+	DatasheetControl.add(user=user, url="https://docs.djangoproject.com/en/1.3/topics/db/models/", kind='H', title="Student", content="Students need to study and work hard.")
+	DatasheetControl.add(user=user, url="http://www.w3schools.com/css/default.asp", kind='H', title="CSS", description="CSS", content="At W3Schools you will find complete CSS references of all properties and selectors with syntax, examples, browser support, and more.", tags=['css', 'w3c'])
+
+	# By Gulshan
+	DatasheetControl.add(timestamp=now - one_day, user=user, url="http://www.w3schools.com/css/default.asp", kind='H', title="CSS-hurray", description="2nd CSS", content=u"Learn from over 150 examples! With our editor, you can edit the CSS, and click on a button to view the result.", tags=['css', 'w3c'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://www.w3schools.com/css/default.asp", kind='H', title="CSS yipee", description="3rd CSS", content=u"This CSS tutorial contains hundreds of CSS examples.", tags=['css', 'w3c'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://en.wikipedia.org/wiki/Maria_Terwiel", kind='H', title="MariaJi", description="Maria is my darling.", content=u"The devout Catholic, along with Helmut Himpel, helped Jews in hiding, to whom they furnished identification and ration cards. There arose contacts with the Red Orchestra group about Harro Schulze-Boysen. Terwiel wrote illegal handbills and put up posters against the Nazi propaganda exhibition Soviet Paradise.", tags=['Maria', 'Terwiel'])
+	DatasheetControl.add(timestamp=now - 3*one_day, user=user, url="http://en.wikipedia.org/wiki/Maria_Terwiel", kind='H', title="MariaJi-1", description="Maria is beautiful", content=u"After her arrest on 17 September 1942, Maria Terwiel was sentenced to death on 26 January 1943 by the Reichskriegsgericht (\"Reich Military Tribunal\"). She was put to death at Plötzensee Prison in Berlin.", tags=['maria', 'yo maria yo'])
+	DatasheetControl.add(timestamp=now - 4*one_day, user=user, url="http://en.wikipedia.org/wiki/Maria_Terwiel", kind='H', title="MariaJi-2", description="Maria is sexy.", content=u"Maria Terwiel (7 June 1910 in Boppard – 5 August 1943 in Berlin-Plötzensee, executed) was a German resistance fighter in the Third Reich. She belonged to the Red Orchestra resistance group.", tags=['maria'])
+	DatasheetControl.add(timestamp=now - 4*one_day, user=user, url="http://en.wikipedia.org/wiki/Maria_Terwiel", kind='H', title="MariaJi-1", description="Maria is beautiful", content=u"After her arrest on 17 September 1942, Maria Terwiel was sentenced to death on 26 January 1943 by the Reichskriegsgericht (\"Reich Military Tribunal\"). She was put to death at Plötzensee Prison in Berlin.", tags=['maria', 'yo maria yo'])
+
+	# Gulshan
+	DatasheetControl.add(user=user, url="http://en.wikipedia.org/wiki/Maria_Terwiel", kind='S', title="Maria Terwiel", colour='Blue', tags=['Maria'])
+	DatasheetControl.add(timestamp=now - one_day, user=user, url="http://www.gegen-diktatur.de/beispiel.php?beisp_id=448&tafel_id=9&thema=0", kind='S', title="Maria", colour='Red', tags=['darling', 'maria'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://www.gdw-berlin.de/index.php?id=191#", kind='S', title="Colour Picker", colour='Red', tags=['Maria', 'fighter'])
+	
+	# Added on 2013-04-07
+	#By Gulshan
+	DatasheetControl.add(timestamp=now - 5*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="OpenData", description=u"Open Data Resources.", content=u"Advocates of open data argue that these restrictions are against the communal good and that these data should be made available without restriction or fee. In addition, it is important that the data are re-usable without requiring further permission, though the types of re-use (such as the creation of derivative works) may be controlled by license.", tags=['open', 'data'])
+	DatasheetControl.add(timestamp=now - 3*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="Open Data No 1", description=u"2nd Open Data", content=u"Numerous scientists have pointed out the irony that right at the historical moment when we have the technologies to permit worldwide availability and distributed process of scientific data, broadening collaboration and accelerating the pace and depth of discovery…..we are busy locking up that data and preventing the use of correspondingly advanced technologies on knowledge", tags=['open', 'chhe', 'data', 'fully'])
+	DatasheetControl.add(timestamp=now - 1*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="Open Data No 2", description=u"3rd Open Data", content=u"While the open-science-data movement long predates the Internet, the availability of fast, ubiquitous networking has significantly changed the context of Open science data, since publishing or obtaining data has become much less expensive and time-consuming.", tags=['fully', 'data', 'open', 'science'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="Open Data No 3", description=u"This article's use of external links may not follow Wikipedia's policies or guidelines. Please improve this article by removing excessive or inappropriate external links, and converting useful links where appropriate into footnote references. (May 2012)", content=u"Several national governments have created web sites to distribute a portion of the data they collect. It is a concept for a collaborative project in municipal Government to create and organize Culture for Open Data or Open government data. A list of over 200 local, regional and national open data catalogues is available on the open source datacatalogs.org project, which aims to be a comprehensive list of data catalogues from around the world. Prominent examples include", tags=['science', 'open', 'hello', 'world'])
+	DatasheetControl.add(timestamp=now - 4*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="Open Data No 4", description=u"This section needs additional citations for verification. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. (May 2011)", content=u"The debate on Open Data is still evolving. The best open government applications seek to empower consumers, to help small businesses, or to create value in some other positive, constructive way. Open government data is only a way-point on the road to improving education, improving government, and building tools to solve other real world problems. While many arguments have been made categorically, the following discussion of arguments for and against open data highlights that these arguments often depend highly on the type of data and its potential uses.", tags=['open', 'data', 'world'])
+	DatasheetControl.add(timestamp=now - 6*one_day, user=user, url="http://en.wikipedia.org/wiki/Open_data", kind='H', title="Open Data No6 Yo!", description=u"", content=u"It is generally held that factual data cannot be copyrighted.[15] However, publishers frequently add copyright statements (often forbidding re-use) to scientific data accompanying publications. It may be unclear whether the factual data embedded in full text are part of the copyright.", tags=['world', 'data', 'openness', 'method'])
+	DatasheetControl.add(timestamp=now - 3*one_day, user=user, url="http://okfn.org/opendata/", kind='H', title="Open Data Site 1", description=u"Open data is data that can be freely used, reused and redistributed by anyone – subject only, at most, to the requirement to attribute and sharealike.", content=u"Universal Participation: everyone must be able to use, reuse and redistribute – there should be no discrimination against fields of endeavour or against persons or groups. For example, ‘non-commercial’ restrictions that would prevent ‘commercial’ use, or restrictions of use for certain purposes (e.g. only in education), are not allowed.", tags=['Open', 'data', 'universal', 'site', 'faad'])
+	DatasheetControl.add(timestamp=now - 8*one_day, user=user, url="http://okfn.org/opendata/", kind='H', title="Open Data Site Big1 2", description=u"If you are looking for practical, more detailed, advice on how to open up data, have a look at the Open Data Handbook. The handbook discusses the legal, social and technical aspects of how to open up data. Read more in the Open Data Handbook. Here we provide some short suggestions for initial steps.", content=u"Engage early and engage often. Engage with actual and potential users and re-users of the data as early and as often as you can, be they citizens, businesses or developers. This will ensure that the next iteration of your service is as relevant as it can be. It is essential to bear in mind that much of the data will not reach ultimate users directly, but rather via ‘info-mediaries’. These are the people who take the data and transform or remix it to be presented. For example, most of us don’t want or need a large database of GPS coordinates, we would much prefer a map. Thus, engage with infomediaries first. They will re-use and repurpose the material.", tags=['Open', 'data', 'universal', 'site', 'faad', 'awesome', 'good'])
+	DatasheetControl.add(timestamp=now - 3*one_day, user=user, url="http://www.10gen.com/customers", kind='H', title="MongoDb Success Stories", description=u"Mongodb's successful journey", content=u"The MongoDB NoSQL database powers thousands of production deployments in dozens of industries - delivering lower cost and faster time to market, alongside superior developer productivity and user experience. Read our customer success stories below to learn how MongoDB meets the demands of modern web applications in media and entertainment, telecommunications, monitoring, and more, across a variety of deployment profiles.", tags=['mongodb', 'moments', 'awesome', 'new', 'success', 'stories'])
+	# By Kushagra
+	DatasheetControl.add(timestamp=now - 9*one_day, user=user, url="http://en.wikipedia.org/wiki/Salman_Khan", kind='H', title="salman", description=u"Salman is fun", content=u"198993: Debut and breakthrough\nSalman Khan made his acting debut with a supporting role in the 1988 film Biwi Ho To Aisi in which his voice was dubbed by someone else His first leading role in a Bollywood movie was in Sooraj R. Barjatya's romantic family drama Maine Pyar Kiya (1989), one of India's highest grossing films.[15][16] It earned him a Filmfare Award for Best Male Debut, as well as his first nomination for a Best Actor at Filmfare. Later the film was dubbed in English as When Love Calls, a 125 minute version, was the biggest hit in the Caribbean market at Guyana and also dominated the box-office collections at Trinidad and Tobago. Maine Pyar Kiya had also been dubbed in Spanish as Te Amo, the first experiment of its kind. This 125 minute film also proved its universal appeal with a glorious 10-week premiere run at Lima, capital of Peru. In Telugu as Prema Paavuraalu, it crossed the 25 weeks at Visakhapatnam and had 100 plus day run at six centres in Andhra Pradesh. It was also dubbed in Tamil as Kaadhal Oru Kavithai and in Malayalam as Ina Praavukal.[17]1990 saw one film release starring Khan, Baaghi: A Rebel for Love,was a box office success.[18] followed by three moderately successful films in 1991, Patthar Ke Phool and Sanam Bewafa, Kurbaan.In the same year,Khan co-starred with Sanjay Dutt and Madhuri Dixit in the Romance Drama film Saajan.[19] The movie was critical and financial success.[20][21] Despite these early successes, nearly all of his 19921993 releases resulted in box office failures.[20].", tags=['salman'])
+	DatasheetControl.add(timestamp=now - 7*one_day, user=user, url="http://en.wikipedia.org/wiki/Salman_Khan", kind='H', title="sallu", description=u"Salman Khan Latest shit", content=u"Khan's first release of 2011 was Ready.Upon release, Ready became the second highest opening day grosser, as well as the second highest weekend grossing Bollywood film at that time, after Dabangg, another Salman Khan-starrer. It also held records for being the second highest grossing Bollywood film of 2011.[49][50] He next appeared in Bodyguard,a remake of the 2010 Malayalam film of the same name.The film was not well received by critics, though became a financial success, with a domestic total of 1,409.5 million (US$26 million)India's highest-earning film of the year.[51]", tags=['Salman'])
+	DatasheetControl.add(timestamp=now - 5*one_day, user=user, url="http://en.wikipedia.org/wiki/Salman_Khan", kind='H', title="Philanthropy", description=u"Salman rock", content=u"Khan has been involved in several charities during his career.[77] He has started an NGO called Being Human which will sell T-shirts and other products online and in stores. A portion of the sales will go to a worthy cause supporting the underprivileged.[78] Being Human Foundation is a registered charitable trust set up by Salman Khan for helping the cause of the underprivileged. In its early days, Salman Khan set up and funded the Foundation using his own money. The Foundation has two focus areas: Education and Healthcare. To increase the reach and corpus of the Foundation, Salman Khan has undertaken initiatives such as Being Human Art; Being Human merchandise; and Being Human Gitanjali Gold Coins.", tags=['salman','123'])
+	DatasheetControl.add(timestamp=now - 10*one_day, user=user, url="http://timesofindia.indiatimes.com/", kind='H', title="Times", description=u"Times of india", content=u"North Korea, incensed by UN sanctions following its nuclear test and by South Korean-US military drills, has issued a series of apocalyptic threats of nuclear war.", tags=['UN'])
+	DatasheetControl.add(timestamp=now - 7*one_day, user=user, url="http://www.thefreedictionary.com/kidding", kind='H', title="kidding", description=u"kidding me", content=u"1.a. A young goat.b. The young of a similar animal, such as an antelope.2.a. The flesh of a young goat.b.Leather made from the skin of a young goat; kidskin.c. An article made from this leather.", tags=['maria', 'yo maria yo'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://www.luminous-landscape.com/reviews/kidding.shtml", kind='H', title="flower", description="flower", content=u"In mid-October, 2008 I found myself conducting a five day One-On-One workshop in Algonquin Park and the Muskoka region of north-central Ontario with a client from Ireland. George was shooting with a Sinar medium format digital system while I was shooting with my Hasselblad H2 and Phase One P45+ back. When I had a few free moments I was also testing the brand new Canon G10 and Nikon P6000 pocket digicams for an upcoming comparative review.I had become very impressed with the Canon G10 after just a few days of earlier light-duty testing. Each evening that week I would sit with my 15\" Macbook Pro reviewing the day's files. At one point I found myself looking at raw files on-screen and not being sure if I was looking at Hasselblad P45+ files or Canon G10 files. That includes at 100% onscreen enlargements.Now, I\'m no newbe. After some 50 years in this industry I know what I\'m looking at, be it a screen blow-up or a print, and I certainly don\'t confuse how something looks on a 15\" laptop screen (though properly profiled and calibrated) with how it will turn out on a critically produced exhibition-quality print. But nevertheless, I was curious about what I was seeing. In fact I was more than curious, I was somewhat amazed.", tags=['kid'])
+	DatasheetControl.add(timestamp=now - 10*one_day, user=user, url="http://www.w3schools.com/php/", kind='H', title="php", description=u"Maria is beautiful", content=u"PHP is a server scripting language, and is a powerful tool for making dynamic and interactive Web pages.PHP is a widely-used, free, and efficient alternative to competitors such as Microsoft's ASP..", tags=['php', 'yo maria yo'])
+	DatasheetControl.add(timestamp=now - 2*one_day, user=user, url="http://in.php.net/", kind='H', title="php", description=u"i love php", content=u"The PHP development team announces the release of PHP 5.5.0alpha6. This release fixes some bugs from alpha5. It also serves as a delay for our next release, beta1, integrating ZendOptimizer+ OPCode cache which is not ready yet to be merged. All users of PHP are encouraged to test this version carefully, and report any bugs in the bug tracking system.", tags=['php'])
+	
+	# By mitthu, 2013-04-10, 11:30 PM
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Maria-Terwiel_Helmut-Himpel.jpg/404px-Maria-Terwiel_Helmut-Himpel.jpg", kind='I', title="Colour Picker", colour='Red', tags=['scraps', 'web'])
+	
+	# Gulshan Dhingra, 2013-04-10, 11:44 PM
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Maria-Terwiel_Helmut-Himpel.jpg/404px-Maria-Terwiel_Helmut-Himpel.jpg", kind='I', title="Colour Picker", colour='Red', tags=['scraps', 'web'])
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/4/4e/History-Dielman-Highsmith.jpeg", kind='I', title="Mataji", colour='Red', tags=['Jai', 'MataDi'])
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/The_Widow_%28Boston_Public_Library%29.jpg/220px-The_Widow_%28Boston_Public_Library%29.jpg", kind='I', title="Mataji No1", colour='Red', tags=['Jai', 'MataDi', 'Hurray'])
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Vite.jpg/150px-Vite.jpg", kind='I', title="What is this?", colour='Red', tags=['ancient', 'idea'])
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/AhmoseI-StatueHead_MetropolitanMuseum.png/100px-AhmoseI-StatueHead_MetropolitanMuseum.png", kind='I', title="Ahmose1", colour='Red', tags=['ancient', 'no idea'])
+	DatasheetControl.add(user=user, url="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Aldrin_Apollo_11.jpg/250px-Aldrin_Apollo_11.jpg", kind='I', title="Space", colour='Red', tags=['space', 'moon'])
+	return
+
+class GeneralTest(TestCase):
+	def test_populate_dbms(self):
+		populate_dbms()
+
+	def test_query_builders(self):
+		populate_dbms()
+		self.assertEqual(1 + 1, 2)

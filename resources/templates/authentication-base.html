@@ -1,0 +1,21 @@
+{% extends "raw.html" %}
+
+<!-- Adding Page Title -->
+{% block title %}Authentication{% endblock %}
+
+<!-- Adding CSS -->
+{% block styles %}{{block.super}}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/authentication-main.css" />
+{% endblock %}
+
+<!-- Body Content -->
+{% block margins %}
+<div class="container-fluid">
+	{% block content %}{% endblock %}
+</div>
+{% endblock %}
+
+<!-- Scripts -->
+{% block scripts_end %}{{block.super}}
+<script src="{{STATIC_URL}}apps/authentication-main.js" type="text/javascript"></script>
+{% endblock %}

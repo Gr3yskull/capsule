@@ -1,0 +1,20 @@
+<!-- Application Logic -->
+{% extends "authentication-base.html" %}
+{% block title %}Signin to your Capsule{% endblock %}
+{% block content %}{{block.super}}
+<div id="sign-in-box" class="form-signin">
+	<form id="sign-in">
+		<div id="sign-in-status" class="error_msg alert alert-error" style="display:none">Status</div>
+		<fieldset>
+			<legend>Capsule login</legend>
+			<input type="text" name="username" placeholder="Username" id="username" class="input-block-level"><br />
+			<input type="password" name="password" placeholder="Password" value="" id="password" class="input-block-level"><br />
+			<input type="submit" class="btn btn-primary btn-large btn-block" value="Login" />
+		</fieldset>
+	</form>
+	<a href="/">New Here?<br />Let me show you around.</a>
+</div>
+{% if redirect %}
+	<span id="redirect" style="display:none">{{redirect}}</span>
+{% endif %}
+{% endblock %}

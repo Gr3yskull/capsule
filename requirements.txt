@@ -1,0 +1,8 @@
+-e git+ssh://git@git.adityabasu.me/forks/web/django-nonrel@39c56d3528d7171c4aa2360ad30ce999fd69e33b#egg=Django-dev
+distribute==0.6.34
+django-mongodb-engine==0.4.0
+djangotoolbox==0.9.2
+## FIXME: could not find svn URL in dependency_links for this package:
+flup==1.0.3.dev-20110405
+pymongo==2.5
+wsgiref==0.1.2

@@ -1,0 +1,22 @@
+body{
+	background-color: #F0F0F0;
+}
+
+.navbar-inner{
+	background:none;
+	filter:none;
+	box-shadow:none;
+	background-color: #300;
+}
+
+.navbar .nav >li >a{
+	color:white;
+	
+}
+.navbar .nav{
+	cursor:pointer;
+}
+
+/*#signin {
+	width: 20em;
+}*/

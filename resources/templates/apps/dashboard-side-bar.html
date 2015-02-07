@@ -1,0 +1,21 @@
+<!-- Side-Bar of the Dashboard -->
+{% extends "dashboard-nav-bar.html" %}
+
+{% block side-bar %}
+{{block.super}}
+<!-- <ul id="navigation" class="nav nav-list" style="position:fixed;width:10%"> -->
+<ul id="navigation" class="nav nav-list">
+	<!-- <li class="nav-header" style="visibility:hidden">Capsule</li> -->
+	<li class="active"><a href="#/highlights/"><i class="icon-th-large"></i> Highlights</a></li>
+	<li><a href="#/stackups/"><i class="icon-bookmark"></i> StackUps</a></li>
+	<li><a href="#/images/"><i class="icon-camera"></i> Images</a></li>
+	<li class="divider"></li>
+	<!-- <li><a href="#/filter/">Filter</a></li> -->
+	<li id="search-side-bar" class="no-display"><a href="#/search/"><i class="icon-search"></i> Search</a></li>
+	
+	<li class="nav-header">Update Profile</li>
+	<li><a href="#/change-username/"><i class="icon-user"></i> Username</a></li>
+	<li><a href="#/change-password/"><i class="icon-lock"></i> Password</a></li>
+	<!-- <li><a href="#/change-details/">Change Other Details</a></li> -->
+</ul>
+{% endblock %}

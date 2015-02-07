@@ -1,0 +1,22 @@
+<!-- Nav-Bar (Top) of the Dashboard -->
+{% extends "dashboard-base.html" %}
+
+{% block nav-bar %}
+{{block.super}}
+<!-- <div class="navbar navbar-static-top"> -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner" style="padding-left:10px;padding-right:10px;">
+		<a id="brand" class="brand" href="#">{{user.username}}'s capsule</a>
+		<ul class="nav pull-right">
+			<li id="progress-nav"><a href="#"><img width="16" height="16" src="{{STATIC_URL}}img/spinner.gif"></img></a></li>
+			<li><a id="goto-tag-modal-btn" href="#tag-cloud-modal" role="button" data-toggle="modal"><i class="icon-tags"></i>  Tag Cloud</a></li>
+			<li id="quick-search" class="input-append" style="margin-top:5px">
+					<input class="" id="search-text" type="text" placeholder="Search" />
+					<button class="btn btn-inverse" id="search-text-btn" onclick="search()" type="button"><i class="icon-search icon-white"></i></button>
+			</li>
+			<li><a id="logout" href="/logout/"><i class="icon-off"></i> Logout</a></li>
+		</ul>
+	</div>
+</div>
+<div style="height:40px;visibility:hidden;">------- HIDDEN -------</div>
+{% endblock %}

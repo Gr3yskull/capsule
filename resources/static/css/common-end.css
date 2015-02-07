@@ -1,0 +1,61 @@
+/* @override 
+	http://localhost:8000/static/css/common-end.css */
+
+/* Added on 1-Mar-2013 */
+/*---------------------*/
+/*html, body {
+    height: 90%;
+}*/
+
+html, body {
+    height: 90%;
+}
+
+iframe {
+	border-style: none;
+	-moz-box-shadow: 0 0 1px #92927f;
+	-webkit-box-shadow: 0 0 1px #92927f;
+	box-shadow: 0 0 1px #92927f;
+}
+
+.mStyle {
+	background-color: #f5f50f;
+	padding: 2px;
+}
+
+/*---------------------*/
+
+::selection, ::-moz-selection {
+	background-color: #f48ff5;
+}
+
+/*.dash-footer {
+	background-color: rgb(0, 0, 0);
+	color: #ffffff;
+	font: 14px "Lucida Grande", Lucida, Verdana, sans-serif;
+	-moz-box-shadow: 0 0 1px #393927;
+	-webkit-box-shadow: 0 0 1px #393927;
+	box-shadow: 0 0 1px #393927;
+	margin: 0;
+	padding: 7px 0;
+}*/
+
+.highlight {
+    border-radius: 7px;
+    background-color: yellow;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 1px;
+}
+
+.surround_error {
+	border: 5px solid #d1082c;
+}
+
+.error_msg {
+	border-radius: 0px;
+	margin: 0 0 7px;
+	border-top: 1px dotted #b30000;
+	border-bottom: 1px dotted #b30000;
+	padding: 7px 8px;
+}
